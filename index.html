@@ -210,6 +210,10 @@
   /* ---------- two columns on wide screens ---------- */
 
   @media (min-width: 68rem){
+    .split, .search{
+      justify-content: space-between;   /* surplus width goes between the columns,
+                                           not into a dead margin on the right */
+    }
     .split{
       display: grid;
       grid-template-columns: minmax(0, 16.5rem) minmax(0, 34rem);
