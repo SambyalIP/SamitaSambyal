@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sambyal IP — Intellectual Property Search &amp; Analytics</title>
-<meta name="description" content="An IP search and analytics practice for life sciences and HiTech. The reference that decides a matter rarely ranks first. Freedom to operate, patentability, invalidity, infringement, landscaping, claim charts, sequence and structure searching.">
+<meta name="theme-color" content="#F1F2F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1C24" media="(prefers-color-scheme: dark)">
+<title>Ink preview — Sambyal IP — Intellectual Property Search, Analytics &amp; Monetization</title>
+<meta name="description" content="An IP search and analytics practice for Life Sciences and HiTech. The reference that decides a matter rarely ranks first. Freedom to operate, patentability, invalidity, infringement, landscaping, claim charts, sequence and structure searching.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sambyal IP — Intellectual Property Search &amp; Analytics">
-<meta property="og:description" content="IP search and analytics for life sciences and HiTech. By referral.">
+<meta property="og:title" content="Sambyal IP — Intellectual Property Search, Analytics &amp; Monetization">
+<meta property="og:description" content="IP search and analytics for Life Sciences and HiTech. By referral.">
 <meta property="og:url" content="https://sambyalip.com/">
 <link rel="canonical" href="https://sambyalip.com/">
 
@@ -21,14 +23,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+  /* Cool grey by default; the original ink when the reader's device asks for dark. */
   :root{
-    --ink:      #0F1C24;
-    --ink-2:    #142530;
-    --bone:     #EDE9E1;
-    --bone-dim: #9EABB1;
-    --brass:    #B08B4F;
-    --brass-lit:#CBA96D;
-    --rule:     rgba(237,233,225,0.13);
+    --paper:      #0F1C24;
+    --band:       rgba(160,200,255,0.05);
+    --ink:        #EDE9E1;
+    --ink-dim:    #9EABB1;
+    --brown:      #CBA96D;
+    --brown-soft: #B08B4F;
+    --rule:       rgba(237,233,225,0.13);
+    --backdrop:   0.07;
+    --weight:     300;
 
     --serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
     --sans:  "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -38,70 +43,104 @@
     --gutter: clamp(1.5rem, 6vw, 7rem);
   }
 
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:      #0F1C24;
+      --band:       rgba(160,200,255,0.05);
+      --ink:        #EDE9E1;
+      --ink-dim:    #9EABB1;
+      --brown:      #CBA96D;
+      --brown-soft: #B08B4F;
+      --rule:       rgba(237,233,225,0.13);
+      --backdrop:   0.07;
+      --weight:     300;
+    }
+    body { -webkit-font-smoothing: antialiased; }
+  }
+
   *, *::before, *::after { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; color-scheme: dark; }
 
   body{
     margin:0;
-    background: var(--ink);
-    color: var(--bone);
+    position: relative;
+    background: var(--paper);
+    color: var(--ink);
     font-family: var(--serif);
     font-size: clamp(1.0625rem, 0.98rem + 0.35vw, 1.1875rem);
-    font-weight: 300;
+    font-weight: var(--weight);
     line-height: 1.72;
-    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
-  ::selection { background: var(--brass); color: var(--ink); }
+  ::selection { background: var(--brown); color: var(--paper); }
 
-  a { color: var(--bone); text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 1px; }
-  a:hover { border-bottom-color: var(--bone); }
-  a:focus-visible { outline: 2px solid var(--brass-lit); outline-offset: 3px; border-radius: 1px; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--brown-soft); padding-bottom: 1px; }
+  a:hover { border-bottom-color: var(--ink); }
+  a:focus-visible { outline: 2px solid var(--brown); outline-offset: 3px; border-radius: 1px; }
+
+  header, .hero, main, footer { position: relative; z-index: 1; }
+
+  /* ---------- backdrop ---------- */
+
+  .backdrop{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    color: var(--ink);
+    opacity: var(--backdrop);
+  }
+  .backdrop .bd { position: absolute; }
+  .backdrop svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .backdrop .bl { fill: none; stroke: currentColor; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
+  .backdrop .bt { fill: none; stroke: currentColor; stroke-width: 0.8; opacity: 0.7; }
+  .backdrop .bf { fill: currentColor; stroke: none; }
+  .backdrop .bw { fill: currentColor; font-family: var(--mono); font-size: 15px; letter-spacing: 5px; }
+  .backdrop .bm { fill: currentColor; font-family: var(--mono); font-size: 8px; }
+
+  @media (max-width: 46rem){
+    .backdrop { opacity: calc(var(--backdrop) - 0.015); }
+    .bd-hero { top: 7% !important; }   /* clear of the headline on narrow screens */
+  }
+  @media (prefers-contrast: more){ .backdrop { display: none; } }
+  @media print { .backdrop { display: none; } }
 
   .wrap { padding-inline: var(--gutter); }
   .measure { max-width: var(--measure); }
 
   /* ---------- masthead ---------- */
 
-  header.masthead { padding-block: clamp(2rem, 5vw, 3.25rem) 0; }
+  header.masthead{
+    padding-block: clamp(2.25rem, 5vw, 3.5rem) clamp(1.5rem, 3.5vw, 2.5rem);
+    border-bottom: 1px solid var(--rule);
+  }
   .wordmark{
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
-    letter-spacing: 0.01em;
+    font-size: clamp(2.75rem, 1.7rem + 4.4vw, 4.4rem);
+    letter-spacing: -0.022em;
+    line-height: 1.0;
     margin: 0;
   }
   .descriptor{
     font-family: var(--sans);
-    font-size: 0.8125rem;
-    letter-spacing: 0.04em;
-    color: var(--bone-dim);
-    margin: 0.4rem 0 0;
+    font-size: min(1.1875rem, 2.72vw);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    color: var(--brown);
+    margin: 1rem 0 0;
+    max-width: none;
+    white-space: nowrap;
   }
 
   /* ---------- hero ---------- */
 
-  .hero{ position: relative; padding-block: clamp(4.5rem, 13vw, 9.5rem) clamp(4rem, 10vw, 7.5rem); overflow: hidden; }
-
-  .alignment{
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    font-family: var(--mono);
-    font-size: clamp(1.5rem, 3.4vw, 2.6rem);
-    line-height: 1.34;
-    letter-spacing: 0.34em;
-    color: var(--bone);
-    opacity: 0.045;
-    white-space: pre;
-    overflow: hidden;
-    user-select: none;
-    pointer-events: none;
-    mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 55%, transparent 92%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 55%, transparent 92%);
-  }
-  .hero > .wrap { position: relative; z-index: 1; }
+  .hero{ padding-block: clamp(3.75rem, 11vw, 8rem) clamp(4rem, 10vw, 7.5rem); }
 
   h1{
     font-family: var(--serif);
@@ -118,7 +157,7 @@
     line-height: 1.62;
     max-width: 40rem;
   }
-  .standfirst .quiet { color: var(--bone-dim); }
+  .standfirst .quiet { color: var(--ink-dim); }
 
   @media (prefers-reduced-motion: no-preference){
     .fade { opacity: 0; transform: translateY(0.6rem); animation: rise 1s cubic-bezier(.2,.7,.3,1) forwards; }
@@ -135,7 +174,7 @@
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--brass-lit);
+    color: var(--brown);
     margin: 0 0 clamp(1.5rem, 3.5vw, 2.25rem);
   }
   .thesis p{
@@ -146,7 +185,7 @@
     margin: 0 0 1.1em;
   }
   .thesis p:last-child { margin-bottom: 0; }
-  .thesis .turn { color: var(--bone-dim); }
+  .thesis .turn { color: var(--ink-dim); }
 
   /* ---------- sections ---------- */
 
@@ -162,7 +201,7 @@
     margin: 0 0 clamp(1.5rem, 3.5vw, 2.25rem);
     max-width: 22ch;
   }
-  .lede { margin: 0 0 clamp(2rem, 5vw, 3rem); color: var(--bone-dim); max-width: var(--measure); }
+  .lede { margin: 0 0 clamp(2rem, 5vw, 3rem); color: var(--ink-dim); max-width: var(--measure); }
   p { margin: 0 0 1.15em; max-width: var(--measure); }
   p:last-child { margin-bottom: 0; }
 
@@ -171,7 +210,7 @@
   .searches { list-style: none; margin: 0; padding: 0; }
   .search{
     display: grid;
-    grid-template-columns: minmax(0, 15rem) minmax(0, 34rem);
+    grid-template-columns: minmax(0, 16.5rem) minmax(0, 34rem);
     gap: clamp(0.5rem, 3vw, 3.5rem);
     padding-block: clamp(1.5rem, 3.2vw, 2.25rem);
     border-top: 1px solid var(--rule);
@@ -181,41 +220,20 @@
   .search h3{
     font-family: var(--serif);
     font-weight: 400;
-    font-size: 1.2rem;
-    line-height: 1.32;
+    font-size: clamp(1.3rem, 1.16rem + 0.55vw, 1.5rem);
+    line-height: 1.26;
+    letter-spacing: -0.006em;
     margin: 0;
   }
   .asks{
     display: block;
     font-family: var(--sans);
-    font-size: 0.8125rem;
-    line-height: 1.55;
-    color: var(--brass-lit);
-    margin-top: 0.45rem;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--brown);
+    margin-top: 0.55rem;
   }
-  .search p { margin: 0; font-size: 0.975em; color: var(--bone-dim); }
-
-  .figure { margin-top: 1.5rem; max-width: 12.5rem; }
-  .figure svg { display: block; width: 100%; height: auto; overflow: visible; }
-  .figure .ln { stroke: var(--bone-dim); stroke-width: 1.15; fill: none; stroke-linecap: round; }
-  .figure .hair { stroke: var(--bone-dim); stroke-width: 0.6; fill: none; opacity: 0.6; }
-  .figure .atom { fill: var(--bone-dim); font-family: var(--sans); font-size: 9px; }
-  .figure .rgrp { fill: var(--brass-lit); font-family: var(--sans); font-size: 9px; }
-  .figure .halo { fill: var(--ink); }
-  .figure .cell { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.4px; }
-  .figure .hdr  { fill: var(--brass-lit); font-family: var(--mono); font-size: 6px; letter-spacing: 0.08em; }
-  .figure .cite { fill: var(--brass-lit); font-family: var(--mono); font-size: 6.4px; }
-
-  .figure + .figure { margin-top: 1.1rem; }
-  .figure .seq   { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.2px; }
-  .figure .coord { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.2px; opacity: 0.65; }
-  .figure .mid   { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.2px; opacity: 0.5; }
-  .figure .res   { fill: var(--brass-lit); }
-  .figure .dot     { fill: var(--bone-dim); }
-  .figure .dot-out { fill: none; stroke: var(--bone-dim); stroke-width: 1; opacity: 0.45; }
-  .figure .mark    { stroke: var(--brass); stroke-width: 1.1; fill: none; }
-
-  @media (max-width: 46rem){ .figure { max-width: 10.5rem; margin-top: 1rem; } }
+  .search p { margin: 0; font-size: 0.975em; color: var(--ink-dim); }
 
   @media (max-width: 46rem){
     .search { grid-template-columns: 1fr; gap: 0.75rem; }
@@ -223,7 +241,7 @@
 
   /* ---------- method ---------- */
 
-  .method { background: var(--ink-2); }
+  .method { background: var(--band); }
   .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(1.5rem, 3.5vw, 2.25rem); }
   .step { max-width: var(--measure); }
   .step h3{
@@ -233,7 +251,7 @@
     line-height: 1.35;
     margin: 0 0 0.4rem;
   }
-  .step p { color: var(--bone-dim); margin: 0; font-size: 0.975em; }
+  .step p { color: var(--ink-dim); margin: 0; font-size: 0.975em; }
 
   /* ---------- principles ---------- */
 
@@ -254,9 +272,9 @@
     top: 0.72em;
     width: 0.6rem;
     height: 1px;
-    background: var(--brass);
+    background: var(--brown-soft);
   }
-  .principle p { color: var(--bone-dim); margin: 0; }
+  .principle p { color: var(--ink-dim); margin: 0; }
 
   @media (max-width: 46rem){
     .principles { padding-left: 0; }
@@ -265,13 +283,13 @@
 
   /* ---------- boundary ---------- */
 
-  .boundary { background: var(--ink-2); }
-  .boundary p { color: var(--bone-dim); }
-  .boundary strong { font-weight: 400; color: var(--bone); }
+  .boundary { background: var(--band); }
+  .boundary p { color: var(--ink-dim); }
+  .boundary strong { font-weight: 400; color: var(--ink); }
 
-  /* ---------- enquiries ---------- */
+  /* ---------- inquiries ---------- */
 
-  .enquiries .email{
+  .inquiries .email{
     display: inline-block;
     font-family: var(--serif);
     font-weight: 300;
@@ -290,11 +308,11 @@
     font-family: var(--sans);
     font-size: 0.8125rem;
     line-height: 1.75;
-    color: var(--bone-dim);
+    color: var(--ink-dim);
   }
   footer p { max-width: 44rem; margin: 0 0 0.6rem; }
   footer p:last-child { margin-bottom: 0; }
-  footer .colophon { color: rgba(158,171,177,0.62); margin-top: 1.5rem; }
+  footer .colophon { color: rgba(85,100,110,0.72); margin-top: 1.5rem; }
 
   @media (prefers-reduced-motion: reduce){
     * { animation: none !important; transition: none !important; }
@@ -303,27 +321,153 @@
 </head>
 <body>
 
+<div class="backdrop" aria-hidden="true">
+  <div class="bd bd-hero" style="top: 4.2%; right: 1.5vw; width: clamp(11rem, 25vw, 24rem);">
+      <svg viewBox="0 0 300 158" xmlns="http://www.w3.org/2000/svg">
+        <text class="bw" x="0" y="24">GATCCTGAAGCTTCAGG</text>
+        <text class="bw" x="0" y="50">CTGAAGCTTCAGGTACC</text>
+        <text class="bw" x="0" y="76">AAGCTTCAGGTACCGAT</text>
+        <text class="bw" x="0" y="102">CTTCAGGTACCGATCAA</text>
+        <text class="bw" x="0" y="128">CAGGTACCGATCAAGCT</text>
+        <text class="bw" x="0" y="154">GTACCGATCAAGCTTGG</text>
+      </svg>
+  </div>
+  <div class="bd" style="top: 20.3%; left: 0.5vw;  width: clamp(9rem, 17vw, 17rem);">
+      <svg viewBox="0 0 240 108" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M10 8 H230 M10 28 H230 M10 48 H230 M10 76 H230 M10 100 H230"/>
+        <path class="bl" d="M10 8 V100 M230 8 V100"/>
+        <rect class="bl" x="104" y="28" width="16" height="48"/>
+        <path class="bt" d="M22 90 H74 M150 90 H206" opacity="0.5"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 26.2%; right: 2.5vw; width: clamp(9.5rem, 19vw, 19rem);">
+      <svg viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M178 10 V66"/>
+        <path class="bl" d="M6 48 H274" opacity="0.6"/>
+        <circle class="bf" cx="40" cy="48" r="3.2"/>
+        <circle class="bf" cx="92" cy="48" r="3.2"/>
+        <circle class="bf" cx="140" cy="48" r="3.2"/>
+        <circle class="bl" cx="228" cy="48" r="3.2"/>
+        <path class="bl" d="M40 58 V66 M92 58 V66 M140 58 V66 M228 58 V66" opacity="0.5"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 30.0%; left: 1.5vw;  width: clamp(9rem, 17vw, 17rem);">
+      <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M14 34 H32 V16 H54 V34 H76 V16 H98 V34 H120 V16 H142 V34 H164 V16 H186 V34 H224"/>
+        <path class="bl" d="M14 82 H54 V62 H120 V82 H164 V62 H224"/>
+        <path class="bl" d="M54 12 V98 M120 12 V98" opacity="0.45" stroke-dasharray="3 3"/>
+        <path class="bl" d="M54 108 H120 M54 103 V113 M120 103 V113"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 33.0%; right: 3.5vw; width: clamp(7rem, 13vw, 13rem);">
+      <svg viewBox="0 0 152 106" xmlns="http://www.w3.org/2000/svg">
+        <rect class="bf" x="10" y="10" width="18" height="18" opacity="0.75"/>
+        <rect class="bf" x="32" y="10" width="18" height="18" opacity="0.35"/>
+        <rect class="bf" x="54" y="10" width="18" height="18" opacity="0.60"/>
+        <rect class="bf" x="76" y="10" width="18" height="18" opacity="0.20"/>
+        <rect class="bf" x="98" y="10" width="18" height="18" opacity="0.45"/>
+        <rect class="bf" x="120" y="10" width="18" height="18" opacity="0.30"/>
+        <rect class="bf" x="10" y="32" width="18" height="18" opacity="0.30"/>
+        <rect class="bf" x="32" y="32" width="18" height="18" opacity="0.85"/>
+        <rect class="bf" x="54" y="32" width="18" height="18" opacity="0.50"/>
+        <rect class="bf" x="76" y="32" width="18" height="18" opacity="0.65"/>
+        <rect class="bf" x="98" y="32" width="18" height="18" opacity="0.25"/>
+        <rect class="bf" x="120" y="32" width="18" height="18" opacity="0.55"/>
+        <rect class="bf" x="10" y="54" width="18" height="18" opacity="0.55"/>
+        <rect class="bf" x="32" y="54" width="18" height="18" opacity="0.40"/>
+        <rect class="bf" x="54" y="54" width="18" height="18" opacity="0.70"/>
+        <rect class="bl" x="76" y="54" width="18" height="18"/>
+        <rect class="bf" x="98" y="54" width="18" height="18" opacity="0.30"/>
+        <rect class="bf" x="120" y="54" width="18" height="18" opacity="0.45"/>
+        <rect class="bf" x="10" y="76" width="18" height="18" opacity="0.20"/>
+        <rect class="bf" x="32" y="76" width="18" height="18" opacity="0.50"/>
+        <rect class="bf" x="54" y="76" width="18" height="18" opacity="0.30"/>
+        <rect class="bf" x="76" y="76" width="18" height="18" opacity="0.45"/>
+        <rect class="bf" x="98" y="76" width="18" height="18" opacity="0.60"/>
+        <rect class="bf" x="120" y="76" width="18" height="18" opacity="0.25"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 39.2%; left: 0.5vw;  width: clamp(9rem, 16vw, 16rem);">
+      <svg viewBox="0 0 280 132" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M0 6 H280 M0 46 H280 M0 86 H280 M0 126 H280 M0 6 V126 M151 6 V126 M280 6 V126"/>
+        <path class="bt" d="M8 26 H112 M8 35 H86 M159 26 H240 M8 66 H104 M8 75 H92 M159 66 H231 M8 106 H96 M8 115 H98 M159 106 H222"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 42.7%; right: 2vw;   width: clamp(9rem, 17vw, 17rem);">
+      <svg viewBox="0 0 280 132" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M0 6 H280 M0 36 H280 M0 66 H280 M0 96 H280 M0 126 H280 M0 6 V126 M151 6 V126 M280 6 V126"/>
+        <path class="bt" d="M8 21 H112 M8 30 H86 M159 21 H240 M8 51 H104 M8 60 H92 M159 51 H231 M8 81 H96 M8 90 H98 M159 81 H222 M8 111 H88 M8 120 H104 M159 111 H213"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 45.4%; left: 1vw;    width: clamp(8rem, 14vw, 14rem);">
+      <svg viewBox="0 0 200 136" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M78 32 L48 50 L48 86 L78 104 L108 86 L108 50 Z"/>
+        <circle class="bl" cx="78" cy="68" r="20" opacity="0.6"/>
+        <path class="bl" d="M78 32 V14"/>
+        <path class="bl" d="M108 50 L130 37"/>
+        <path class="bl" d="M108 86 L131 100 L154 86"/>
+        <path class="bl" d="M151 86 V66 M157 86 V66"/>
+        <path class="bl" d="M154 86 L177 100"/>
+        <path class="bl" d="M48 86 L26 99"/>
+        <path class="bl" d="M177 100 V122"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 47.4%; right: 2vw;   width: clamp(11rem, 20vw, 20rem);">
+      <svg viewBox="0 0 260 76" xmlns="http://www.w3.org/2000/svg">
+        <text class="bm" x="0" y="18" xml:space="preserve">Query  297  QYNSTYRVVSVLTVLHQDWLNGKE  320</text>
+        <text class="bm" x="0" y="30" xml:space="preserve">            |||||&#160;||||||||||||||||||</text>
+        <text class="bm" x="0" y="42" xml:space="preserve">Sbjct  301  QYNSTFRVVSVLTVLHQDWLNGKE  324</text>
+        <path class="bl" d="M0 56 H196"/>
+        <text class="bm" x="0" y="70" xml:space="preserve">Identity 23/24 (96%)   Coverage 100%</text>
+      </svg>
+  </div>
+  <div class="bd" style="top: 55.5%; right: 3vw;   width: clamp(10rem, 18vw, 18rem);">
+      <svg viewBox="0 0 260 76" xmlns="http://www.w3.org/2000/svg">
+        <text class="bm" x="0" y="18" xml:space="preserve">Query  297  QYNSTYRVVSVLTVLHQDWLNGKE  320</text>
+        <text class="bm" x="0" y="30" xml:space="preserve">            |||||&#160;||||||||||||||||||</text>
+        <text class="bm" x="0" y="42" xml:space="preserve">Sbjct  301  QYNSTFRVVSVLTVLHQDWLNGKE  324</text>
+        <path class="bl" d="M0 56 H196"/>
+        <text class="bm" x="0" y="70" xml:space="preserve">Identity 23/24 (96%)   Coverage 100%</text>
+      </svg>
+  </div>
+  <div class="bd" style="top: 70.5%; left: 1vw;    width: clamp(8rem, 14vw, 14rem);">
+      <svg viewBox="0 0 200 136" xmlns="http://www.w3.org/2000/svg">
+        <path class="bl" d="M78 32 L48 50 L48 86 L78 104 L108 86 L108 50 Z"/>
+        <circle class="bl" cx="78" cy="68" r="20" opacity="0.6"/>
+        <path class="bl" d="M78 32 V14"/>
+        <path class="bl" d="M108 50 L130 37"/>
+        <path class="bl" d="M108 86 L131 100 L154 86"/>
+        <path class="bl" d="M151 86 V66 M157 86 V66"/>
+        <path class="bl" d="M154 86 L177 100"/>
+        <path class="bl" d="M48 86 L26 99"/>
+        <path class="bl" d="M177 100 V122"/>
+      </svg>
+  </div>
+  <div class="bd" style="top: 84.0%; left: 1vw;    width: clamp(10rem, 20vw, 20rem);">
+      <svg viewBox="0 0 300 132" xmlns="http://www.w3.org/2000/svg">
+        <text class="bw" x="0" y="24">GATCCTGAAGCTTCAGG</text>
+        <text class="bw" x="0" y="50">CTGAAGCTTCAGGTACC</text>
+        <text class="bw" x="0" y="76">AAGCTTCAGGTACCGAT</text>
+        <text class="bw" x="0" y="102">CTTCAGGTACCGATCAA</text>
+        <text class="bw" x="0" y="128">CAGGTACCGATCAAGCT</text>
+      </svg>
+  </div>
+</div>
+
 <header class="masthead wrap">
   <p class="wordmark">Sambyal&nbsp;IP</p>
-  <p class="descriptor">Intellectual Property Search &amp; Analytics</p>
+  <p class="descriptor">Intellectual Property Search, Analytics &amp; Monetization</p>
 </header>
 
 <div class="hero">
-  <div class="alignment" aria-hidden="true">  GATCCTGAAGCTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCC
-  CTGAAGCTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCA
-  AAGCTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTG
-  CTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGC
-  CAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGG
-  GTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAAT
-  CCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAATTCG
-  ATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAATTCGCCC
-  AAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAATTCGCCCTTA</div>
   <div class="wrap">
     <h1 class="fade fade-1">The reference that decides a matter rarely ranks first.</h1>
     <p class="standfirst fade fade-2">
-      Sambyal&nbsp;IP is an IP search and analytics practice for life sciences and
-      HiTech.
-      <span class="quiet">It works by referral, and takes one engagement at a time.</span>
+      Sambyal&nbsp;IP brings 20+ years of prior art search to Life Sciences and HiTech
+      attorneys — testing an invention, clearing a product, breaking a claim, defending
+      one, proving a use, finding the white space.
+      <span class="quiet">It works by referral, through the network that work
+      built.</span>
     </p>
   </div>
 </div>
@@ -333,13 +477,13 @@
   <section class="wrap thesis" aria-labelledby="position-heading">
     <p class="eyebrow" id="position-heading">The position</p>
     <p>
-      Retrieval is no longer the hard part. Any competent tool now returns more prior art
-      than a matter can absorb, and the cost of producing results is falling toward zero.
-      What none of it does is decide.
+      Retrieval is no longer the hard part. AI has made prior art cheap: any competent
+      tool now returns more of it than a matter can absorb, and the cost of producing
+      results is falling toward zero. What none of it does is decide.
     </p>
     <p class="turn">
       The work that survives that shift is judgment. Scoping a search to the question
-      actually being asked. Recognising the reference that reads on a claim when nothing
+      actually being asked. Recognizing the reference that reads on a claim when nothing
       in its language says so. Producing an analysis that holds when someone is paid to
       break it.
     </p>
@@ -363,7 +507,7 @@
       <li class="search">
         <div>
           <h3>Freedom to operate</h3>
-          <span class="asks">Can this be practised, and where?</span>
+          <span class="asks">Can this be practiced, and where?</span>
         </div>
         <p>
           A defined product, process or formulation read against granted in-force claims,
@@ -394,22 +538,6 @@
         <div>
           <h3>Invalidity and validity</h3>
           <span class="asks">What did the examiner miss — and will it hold?</span>
-          <div class="figure">
-            <svg viewBox="0 0 208 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-              <text class="hdr" x="132" y="14" text-anchor="middle">CRITICAL DATE</text>
-              <path class="mark" d="M132 20 V58"/>
-              <path class="hair" d="M2 48 H206"/>
-              <circle class="dot" cx="24" cy="48" r="2.6"/>
-              <circle class="dot" cx="62" cy="48" r="2.6"/>
-              <circle class="dot" cx="100" cy="48" r="2.6"/>
-              <circle class="dot-out" cx="172" cy="48" r="2.6"/>
-              <text class="coord" x="24"  y="62" text-anchor="middle">D1</text>
-              <text class="coord" x="62"  y="62" text-anchor="middle">D2</text>
-              <text class="coord" x="100" y="62" text-anchor="middle">D3</text>
-              <text class="coord" x="172" y="62" text-anchor="middle" opacity="0.45">D4</text>
-              <text class="cite" x="0" y="82" xml:space="preserve">D4 postdates it — excluded</text>
-            </svg>
-          </div>
         </div>
         <p>
           The same discipline from opposite postures. Against an asserted patent, an
@@ -426,7 +554,7 @@
       <li class="search">
         <div>
           <h3>Infringement and evidence of use</h3>
-          <span class="asks">Who is practising the claims?</span>
+          <span class="asks">Who is practicing the claims?</span>
         </div>
         <p>
           Granted claims mapped onto commercial products and processes, evidenced from
@@ -445,7 +573,7 @@
         </div>
         <p>
           Structured mapping of a technology or therapeutic area: filing velocity,
-          assignee positions normalised across subsidiaries and acquisitions, family-level
+          assignee positions normalized across subsidiaries and acquisitions, family-level
           jurisdictional coverage, classification co-occurrence and white space. Built to
           inform a decision — a portfolio move, a financing round, an acquisition — which
           means the analysis is only as broad as that decision requires. A landscape that
@@ -455,15 +583,15 @@
 
       <li class="search">
         <div>
-          <h3>Licensing and monetisation support</h3>
+          <h3>Licensing and monetization support</h3>
           <span class="asks">Which assets earn, and who is already using them?</span>
         </div>
         <p>
           Portfolio analysis directed at revenue rather than at protection: asset mining
           and ranking to surface the claims with commercial reach, evidence-of-use work
-          identifying who is already practising them, counterpart mapping across
+          identifying who is already practicing them, counterpart mapping across
           jurisdictions, and maintenance-fee analysis on assets costing more than they
-          return. What this produces is the evidential groundwork a licensing programme is
+          return. What this produces is the evidential groundwork a licensing program is
           built on. Terms, valuation opinions and negotiation remain matters for counsel.
         </p>
       </li>
@@ -489,25 +617,6 @@
         <div>
           <h3>Claim charts and claim mapping</h3>
           <span class="asks">Show the read, limitation by limitation.</span>
-          <div class="figure">
-            <svg viewBox="0 0 208 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" opacity="0.75">
-              <path class="hair" d="M0 0 H208 M0 18 H208 M0 46 H208 M0 74 H208 M0 102 H208 M0 130 H208"/>
-              <path class="hair" d="M0 0 V130 M112 0 V130 M208 0 V130"/>
-              <text class="hdr" x="7" y="12">LIMITATION</text>
-              <text class="hdr" x="119" y="12">DISCLOSURE</text>
-              <text class="cell" x="7" y="31">1[a] a polypeptide</text>
-              <text class="cell" x="7" y="40">comprising SEQ ID NO:1</text>
-              <text class="cite" x="119" y="31">col. 4, ll. 12–19</text>
-              <text class="cell" x="7" y="59">1[b] wherein X is</text>
-              <text class="cell" x="7" y="68">glycosylated at Asn-297</text>
-              <text class="cite" x="119" y="59">col. 6, ll. 3–11</text>
-              <text class="cell" x="7" y="87">1[c] said host cell</text>
-              <text class="cell" x="7" y="96">being CHO-derived</text>
-              <text class="cite" x="119" y="87">[0042]–[0045]</text>
-              <text class="cell" x="7" y="115">1[d] …</text>
-              <text class="cite" x="119" y="115">EP 0 …  A1, p. 7</text>
-            </svg>
-          </div>
         </div>
         <p>
           Every limitation set against the specific disclosure said to meet it, cited to
@@ -522,48 +631,13 @@
         <div>
           <h3>Sequence and chemical structure searching</h3>
           <span class="asks">Find what text retrieval cannot reach.</span>
-          <div class="figure">
-            <svg viewBox="0 0 208 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-              <text class="seq" x="0" y="10" xml:space="preserve"><tspan class="coord">Query  297  </tspan>QYNST<tspan class="res">Y</tspan>RVVSVLTVLHQDWLNGKE<tspan class="coord">  320</tspan></text>
-              <text class="mid" x="0" y="19" xml:space="preserve">            |||||&#160;||||||||||||||||||</text>
-              <text class="seq" x="0" y="28" xml:space="preserve"><tspan class="coord">Sbjct  301  </tspan>QYNST<tspan class="res">F</tspan>RVVSVLTVLHQDWLNGKE<tspan class="coord">  324</tspan></text>
-              <path class="hair" d="M0 38 H160"/>
-              <text class="cite" x="0" y="52" xml:space="preserve">Identity 23/24 (96%)   Coverage 100%</text>
-            </svg>
-          </div>
-          <div class="figure">
-            <svg viewBox="0 0 200 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" opacity="0.6">
-              <!-- six-membered ring, one vertex a variable heteroatom -->
-              <path class="ln" d="M60 42 L34 57 L34 87 L60 102 L86 87 L86 57 Z"/>
-              <circle class="hair" cx="60" cy="72" r="17"/>
-              <!-- R1 -->
-              <path class="ln" d="M60 42 L60 25"/>
-              <text class="rgrp" x="60" y="18" text-anchor="middle">R¹</text>
-              <!-- R2 -->
-              <path class="ln" d="M86 57 L104 46"/>
-              <text class="rgrp" x="110" y="43">R²</text>
-              <!-- amide pendant -->
-              <path class="ln" d="M86 87 L106 99 L126 87"/>
-              <path class="ln" d="M123.5 87 L123.5 69"/>
-              <path class="ln" d="M128.5 87 L128.5 69"/>
-              <path class="ln" d="M126 87 L146 99"/>
-              <text class="rgrp" x="152" y="103">R³</text>
-              <!-- ring heteroatom and chain labels, masked out of the bonds -->
-              <circle class="halo" cx="34" cy="87" r="6.5"/>
-              <text class="atom" x="34" y="90" text-anchor="middle">X</text>
-              <circle class="halo" cx="106" cy="99" r="6.5"/>
-              <text class="atom" x="106" y="102" text-anchor="middle">N</text>
-              <circle class="halo" cx="126" cy="65" r="6"/>
-              <text class="atom" x="126" y="68" text-anchor="middle">O</text>
-            </svg>
-          </div>
         </div>
         <p>
           Nucleotide and amino acid sequence searching, with alignments reported on
           identity and coverage rather than reduced to a single similarity threshold, and
           chemical structure, substructure and Markush searching for genus claims that
           text retrieval cannot reach. Sequence listings are worked to WIPO ST.26. Across
-          life sciences and HiTech this is where a search is won or lost, and it is the
+          Life Sciences and HiTech this is where a search is won or lost, and it is the
           part most often approximated.
         </p>
       </li>
@@ -593,8 +667,10 @@
         <h3>The strategy is disclosed, not concealed</h3>
         <p>
           Search strings, the CPC and IPC ranges worked, every database queried and the
-          date bounds applied are recorded in the report. Where recall was traded against
-          precision, the report says where and why. A search whose method is invisible
+          date bounds applied are recorded in the report. Where AI or semantic tools were
+          used, the report says which, at which step, and what was checked by hand
+          afterwards. Where recall was traded against precision, the report says where and
+          why. A search whose method is invisible
           cannot be defended, extended or relied on — and cannot be told apart from one
           that was never run.
         </p>
@@ -664,7 +740,7 @@
       <li class="principle">
         <h3>By referral</h3>
         <p>
-          There is no outbound programme and no enquiry funnel behind this page. Work
+          There is no outbound program and no inquiry funnel behind this page. Work
           arrives through relationships built over two decades and through introductions
           made within them.
         </p>
@@ -685,7 +761,9 @@
           Material arrives here before it is public. It is held in an enterprise cloud
           environment with encryption in transit and at rest, two-step verification
           enforced on every account with access, and that access confined to the
-          engagement it belongs to. Retention and return are agreed at scoping rather
+          engagement it belongs to. Nothing that arrives here is entered into a public AI
+          service or used to train a model; where AI-assisted tooling is used at all, it
+          runs inside that environment. Retention and return are agreed at scoping rather
           than assumed. The underlying data processing terms and the handling practice
           are supplied to an information security desk on request.
         </p>
@@ -708,16 +786,25 @@
     <h2 id="foundation-heading">The foundation</h2>
     <div class="measure">
       <p>
-        IP search in the life sciences and in HiTech sits on a seam
-        between the science and the claim. A searcher who reads the science but not the
-        claim returns art that is interesting and does not matter. One who reads the claim
-        but not the science walks past the disclosure that does. Work that holds up is
-        done standing on both sides of it.
+        Every reference has to be read twice: for what it discloses, and for what it
+        claims. Read only for the technology, a search returns art that is interesting and
+        beside the point. Read only for the claim, it walks past the disclosure that
+        decides the matter. This practice does both at once — doctoral-level technical
+        training alongside a formal grounding in patent law, not a technical search passed
+        afterwards to someone who reads the claims.
       </p>
       <p>
-        Behind this practice is twenty years of exactly that work, across US, UK, European
-        and Asian portfolios, and every engagement is reviewed against the standard that
-        work set.
+        Behind it are twenty years of prior art work for outside counsel and in-house
+        departments in the US, Europe and Asia: prosecution, oppositions, pre-suit
+        assessment. It runs through cross-domain teams — electronics and software,
+        mechanical, pharmaceutical, biomedical and agrichemical subject matter, clinical
+        and molecular diagnostics. The search goes to the attorney, in the attorney's
+        format and on the attorney's deadline. The opinion stays with the attorney.
+      </p>
+      <p>
+        Those years cover the principal filing jurisdictions, which differ in practice
+        more than in law, and they leave a network of attorneys, agents and analysts
+        across them.
       </p>
       <p>
         Searching is conducted in professional patent and non-patent literature databases,
@@ -731,16 +818,19 @@
     <h2 id="boundary-heading">What this practice is not</h2>
     <div class="measure">
       <p>
-        <strong>Sambyal&nbsp;IP is not a law firm and does not practise law.</strong>
-        It provides scientific and technical search, analysis and data services. Nothing
-        it produces is legal advice, a legal opinion or a clearance. The search is
-        delivered to the attorney, who forms the opinion and carries it.
+        <strong>Sambyal&nbsp;IP is not a law firm and does not practice law.</strong>
+        It provides scientific and technical search, analysis and data services, and on
+        brokerage and monetization work it acts as a commercial intermediary:
+        introductions, packaging and the evidential groundwork. Nothing it produces is
+        legal advice, a legal opinion, a clearance or a valuation. Terms, diligence and
+        negotiation sit with the parties and their counsel, and the search is delivered to
+        the attorney, who forms the opinion and carries it.
       </p>
     </div>
   </section>
 
-  <section class="wrap enquiries" aria-labelledby="enquiries-heading">
-    <h2 id="enquiries-heading">Enquiries</h2>
+  <section class="wrap inquiries" aria-labelledby="inquiries-heading">
+    <h2 id="inquiries-heading">Inquiries</h2>
     <div class="measure">
       <p>
         The practice does not solicit work. Introductions made from within the
@@ -755,10 +845,10 @@
 </main>
 
 <footer class="wrap">
-  <p>Sambyal&nbsp;IP · Intellectual Property Search &amp; Analytics · New Delhi, India</p>
+  <p>Sambyal&nbsp;IP · Intellectual Property Search, Analytics &amp; Monetization · New Delhi, India</p>
   <p>
     Scientific and technical data analysis, research, search, portfolio and commercial
-    intermediary support services in life sciences and HiTech. Non-legal.
+    intermediary support services in Life Sciences and HiTech. Non-legal.
   </p>
   <p class="colophon">© 2026 Sambyal IP. All rights reserved.</p>
 </footer>
