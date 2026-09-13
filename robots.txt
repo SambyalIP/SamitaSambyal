@@ -1,0 +1,4 @@
+# Sambyal IP — referral-only. The site is reachable to anyone holding the URL,
+# but is not offered to search indexes. Remove this file to reverse.
+User-agent: *
+Disallow: /

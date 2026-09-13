@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sambyal IP — Intellectual Property Search &amp; Analytics</title>
+<meta name="description" content="An IP search and analytics practice for life sciences and HiTech. The reference that decides a matter rarely ranks first. Freedom to operate, patentability, invalidity, infringement, landscaping, claim charts, sequence and structure searching.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sambyal IP — Intellectual Property Search &amp; Analytics">
+<meta property="og:description" content="IP search and analytics for life sciences and HiTech. By referral.">
+<meta property="og:url" content="https://sambyalip.com/">
+<link rel="canonical" href="https://sambyalip.com/">
+
+<!-- Keeps the page out of search results while leaving it reachable to anyone given
+     the URL. Delete this line and robots.txt if you later want to be findable. -->
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:      #0F1C24;
+    --ink-2:    #142530;
+    --bone:     #EDE9E1;
+    --bone-dim: #9EABB1;
+    --brass:    #B08B4F;
+    --brass-lit:#CBA96D;
+    --rule:     rgba(237,233,225,0.13);
+
+    --serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    --sans:  "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+    --measure: 34rem;
+    --gutter: clamp(1.5rem, 6vw, 7rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body{
+    margin:0;
+    background: var(--ink);
+    color: var(--bone);
+    font-family: var(--serif);
+    font-size: clamp(1.0625rem, 0.98rem + 0.35vw, 1.1875rem);
+    font-weight: 300;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--brass); color: var(--ink); }
+
+  a { color: var(--bone); text-decoration: none; border-bottom: 1px solid var(--brass); padding-bottom: 1px; }
+  a:hover { border-bottom-color: var(--bone); }
+  a:focus-visible { outline: 2px solid var(--brass-lit); outline-offset: 3px; border-radius: 1px; }
+
+  .wrap { padding-inline: var(--gutter); }
+  .measure { max-width: var(--measure); }
+
+  /* ---------- masthead ---------- */
+
+  header.masthead { padding-block: clamp(2rem, 5vw, 3.25rem) 0; }
+  .wordmark{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.5rem);
+    letter-spacing: 0.01em;
+    margin: 0;
+  }
+  .descriptor{
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--bone-dim);
+    margin: 0.4rem 0 0;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero{ position: relative; padding-block: clamp(4.5rem, 13vw, 9.5rem) clamp(4rem, 10vw, 7.5rem); overflow: hidden; }
+
+  .alignment{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    font-family: var(--mono);
+    font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+    line-height: 1.34;
+    letter-spacing: 0.34em;
+    color: var(--bone);
+    opacity: 0.045;
+    white-space: pre;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 55%, transparent 92%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 55%, transparent 92%);
+  }
+  .hero > .wrap { position: relative; z-index: 1; }
+
+  h1{
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2.15rem, 1.35rem + 3.9vw, 3.9rem);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    margin: 0;
+    max-width: 21ch;
+  }
+  .standfirst{
+    margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+    font-size: clamp(1.125rem, 1.02rem + 0.42vw, 1.375rem);
+    line-height: 1.62;
+    max-width: 40rem;
+  }
+  .standfirst .quiet { color: var(--bone-dim); }
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade { opacity: 0; transform: translateY(0.6rem); animation: rise 1s cubic-bezier(.2,.7,.3,1) forwards; }
+    .fade-1 { animation-delay: .05s; }
+    .fade-2 { animation-delay: .32s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+
+  /* ---------- thesis ---------- */
+
+  .eyebrow{
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brass-lit);
+    margin: 0 0 clamp(1.5rem, 3.5vw, 2.25rem);
+  }
+  .thesis p{
+    font-size: clamp(1.25rem, 1.02rem + 0.95vw, 1.75rem);
+    line-height: 1.46;
+    letter-spacing: -0.008em;
+    max-width: 42rem;
+    margin: 0 0 1.1em;
+  }
+  .thesis p:last-child { margin-bottom: 0; }
+  .thesis .turn { color: var(--bone-dim); }
+
+  /* ---------- sections ---------- */
+
+  section { padding-block: clamp(3.5rem, 8vw, 6rem); }
+  section + section { border-top: 1px solid var(--rule); }
+
+  h2{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 1.3rem + 1.3vw, 2.3rem);
+    line-height: 1.18;
+    letter-spacing: -0.012em;
+    margin: 0 0 clamp(1.5rem, 3.5vw, 2.25rem);
+    max-width: 22ch;
+  }
+  .lede { margin: 0 0 clamp(2rem, 5vw, 3rem); color: var(--bone-dim); max-width: var(--measure); }
+  p { margin: 0 0 1.15em; max-width: var(--measure); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---------- the searches ---------- */
+
+  .searches { list-style: none; margin: 0; padding: 0; }
+  .search{
+    display: grid;
+    grid-template-columns: minmax(0, 15rem) minmax(0, 34rem);
+    gap: clamp(0.5rem, 3vw, 3.5rem);
+    padding-block: clamp(1.5rem, 3.2vw, 2.25rem);
+    border-top: 1px solid var(--rule);
+  }
+  .search:last-child { border-bottom: 1px solid var(--rule); }
+
+  .search h3{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.32;
+    margin: 0;
+  }
+  .asks{
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--brass-lit);
+    margin-top: 0.45rem;
+  }
+  .search p { margin: 0; font-size: 0.975em; color: var(--bone-dim); }
+
+  .figure { margin-top: 1.5rem; max-width: 12.5rem; }
+  .figure svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .figure .ln { stroke: var(--bone-dim); stroke-width: 1.15; fill: none; stroke-linecap: round; }
+  .figure .hair { stroke: var(--bone-dim); stroke-width: 0.6; fill: none; opacity: 0.6; }
+  .figure .atom { fill: var(--bone-dim); font-family: var(--sans); font-size: 9px; }
+  .figure .rgrp { fill: var(--brass-lit); font-family: var(--sans); font-size: 9px; }
+  .figure .halo { fill: var(--ink); }
+  .figure .cell { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.4px; }
+  .figure .hdr  { fill: var(--brass-lit); font-family: var(--mono); font-size: 6px; letter-spacing: 0.08em; }
+  .figure .cite { fill: var(--brass-lit); font-family: var(--mono); font-size: 6.4px; }
+
+  .figure + .figure { margin-top: 1.1rem; }
+  .figure .seq   { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.2px; }
+  .figure .coord { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.2px; opacity: 0.65; }
+  .figure .mid   { fill: var(--bone-dim); font-family: var(--mono); font-size: 6.2px; opacity: 0.5; }
+  .figure .res   { fill: var(--brass-lit); }
+  .figure .dot     { fill: var(--bone-dim); }
+  .figure .dot-out { fill: none; stroke: var(--bone-dim); stroke-width: 1; opacity: 0.45; }
+  .figure .mark    { stroke: var(--brass); stroke-width: 1.1; fill: none; }
+
+  @media (max-width: 46rem){ .figure { max-width: 10.5rem; margin-top: 1rem; } }
+
+  @media (max-width: 46rem){
+    .search { grid-template-columns: 1fr; gap: 0.75rem; }
+  }
+
+  /* ---------- method ---------- */
+
+  .method { background: var(--ink-2); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(1.5rem, 3.5vw, 2.25rem); }
+  .step { max-width: var(--measure); }
+  .step h3{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.15rem;
+    line-height: 1.35;
+    margin: 0 0 0.4rem;
+  }
+  .step p { color: var(--bone-dim); margin: 0; font-size: 0.975em; }
+
+  /* ---------- principles ---------- */
+
+  .principles { list-style: none; margin: 0; padding: 0 0 0 1.5rem; display: grid; gap: clamp(1.75rem, 4vw, 2.5rem); }
+  .principle { max-width: var(--measure); }
+  .principle h3{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+    position: relative;
+  }
+  .principle h3::before{
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 0.72em;
+    width: 0.6rem;
+    height: 1px;
+    background: var(--brass);
+  }
+  .principle p { color: var(--bone-dim); margin: 0; }
+
+  @media (max-width: 46rem){
+    .principles { padding-left: 0; }
+    .principle h3::before { display: none; }
+  }
+
+  /* ---------- boundary ---------- */
+
+  .boundary { background: var(--ink-2); }
+  .boundary p { color: var(--bone-dim); }
+  .boundary strong { font-weight: 400; color: var(--bone); }
+
+  /* ---------- enquiries ---------- */
+
+  .enquiries .email{
+    display: inline-block;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.4rem);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-top: 0.75rem;
+    word-break: break-word;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    border-top: 1px solid var(--rule);
+    padding-block: clamp(2.5rem, 5vw, 3.5rem);
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    line-height: 1.75;
+    color: var(--bone-dim);
+  }
+  footer p { max-width: 44rem; margin: 0 0 0.6rem; }
+  footer p:last-child { margin-bottom: 0; }
+  footer .colophon { color: rgba(158,171,177,0.62); margin-top: 1.5rem; }
+
+  @media (prefers-reduced-motion: reduce){
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead wrap">
+  <p class="wordmark">Sambyal&nbsp;IP</p>
+  <p class="descriptor">Intellectual Property Search &amp; Analytics</p>
+</header>
+
+<div class="hero">
+  <div class="alignment" aria-hidden="true">  GATCCTGAAGCTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCC
+  CTGAAGCTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCA
+  AAGCTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTG
+  CTTCAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGC
+  CAGGTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGG
+  GTACCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAAT
+  CCGATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAATTCG
+  ATCAAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAATTCGCCC
+  AAGCTTGGTACCGAGCTCGGATCCACTAGTAACGGCCGCCAGTGTGCTGGAATTCGCCCTTA</div>
+  <div class="wrap">
+    <h1 class="fade fade-1">The reference that decides a matter rarely ranks first.</h1>
+    <p class="standfirst fade fade-2">
+      Sambyal&nbsp;IP is an IP search and analytics practice for life sciences and
+      HiTech.
+      <span class="quiet">It works by referral, and takes one engagement at a time.</span>
+    </p>
+  </div>
+</div>
+
+<main>
+
+  <section class="wrap thesis" aria-labelledby="position-heading">
+    <p class="eyebrow" id="position-heading">The position</p>
+    <p>
+      Retrieval is no longer the hard part. Any competent tool now returns more prior art
+      than a matter can absorb, and the cost of producing results is falling toward zero.
+      What none of it does is decide.
+    </p>
+    <p class="turn">
+      The work that survives that shift is judgment. Scoping a search to the question
+      actually being asked. Recognising the reference that reads on a claim when nothing
+      in its language says so. Producing an analysis that holds when someone is paid to
+      break it.
+    </p>
+    <p class="turn">
+      This practice is built for that end state rather than adapted to it. It does not
+      compete on volume, turnaround tables or headcount, because none of those will stay
+      scarce. It competes on the part that stays hard.
+    </p>
+  </section>
+
+  <section class="wrap" aria-labelledby="searches-heading">
+    <h2 id="searches-heading">The work</h2>
+    <p class="lede">
+      Each answers a different question, and the question comes first. It determines
+      scope, the databases and classification ranges worked, the date bounds applied, and
+      what the report has to establish.
+    </p>
+
+    <ul class="searches">
+
+      <li class="search">
+        <div>
+          <h3>Freedom to operate</h3>
+          <span class="asks">Can this be practised, and where?</span>
+        </div>
+        <p>
+          A defined product, process or formulation read against granted in-force claims,
+          and against pending claims that could still issue, in the jurisdictions that
+          matter. Legal status is verified at family level rather than inferred — lapses,
+          revocations, and any term extension or SPC that moves an expiry date. Anything
+          capable of reading on the embodiment is charted limitation by limitation, with
+          the basis for each conclusion set out rather than asserted.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Patentability</h3>
+          <span class="asks">Is there anything left to claim?</span>
+        </div>
+        <p>
+          A pre-filing search across patent and non-patent literature, run before drafting
+          time is committed. Scoped to the inventive concept rather than to the disclosure
+          as drafted, so the closest art surfaces against novelty and against obviousness
+          while the claims can still be shaped around it. Classification ranges are worked
+          alongside text, because the reference that anticipates rarely uses the
+          applicant's vocabulary.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Invalidity and validity</h3>
+          <span class="asks">What did the examiner miss — and will it hold?</span>
+          <div class="figure">
+            <svg viewBox="0 0 208 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <text class="hdr" x="132" y="14" text-anchor="middle">CRITICAL DATE</text>
+              <path class="mark" d="M132 20 V58"/>
+              <path class="hair" d="M2 48 H206"/>
+              <circle class="dot" cx="24" cy="48" r="2.6"/>
+              <circle class="dot" cx="62" cy="48" r="2.6"/>
+              <circle class="dot" cx="100" cy="48" r="2.6"/>
+              <circle class="dot-out" cx="172" cy="48" r="2.6"/>
+              <text class="coord" x="24"  y="62" text-anchor="middle">D1</text>
+              <text class="coord" x="62"  y="62" text-anchor="middle">D2</text>
+              <text class="coord" x="100" y="62" text-anchor="middle">D3</text>
+              <text class="coord" x="172" y="62" text-anchor="middle" opacity="0.45">D4</text>
+              <text class="cite" x="0" y="82" xml:space="preserve">D4 postdates it — excluded</text>
+            </svg>
+          </div>
+        </div>
+        <p>
+          The same discipline from opposite postures. Against an asserted patent, an
+          adversarial search bounded to the earliest effective filing date, directed at
+          anticipation and at obviousness combinations, with the public-availability date
+          of each reference evidenced rather than assumed — the point at which invalidity
+          contentions most often fail. Built to go into an opposition, a petition or a
+          pre-suit assessment, where the window is fixed and does not reopen. For a
+          holder, the same search run before assertion, acquisition or licensing, so the
+          weak point is known in advance rather than discovered in a response.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Infringement and evidence of use</h3>
+          <span class="asks">Who is practising the claims?</span>
+        </div>
+        <p>
+          Granted claims mapped onto commercial products and processes, evidenced from
+          public technical material — datasheets, regulatory submissions, service manuals,
+          standards contributions, published literature — with each limitation tied to a
+          source a third party can retrieve. Where the claim is drawn to a method, the
+          evidence has to show the step being performed rather than the capacity to
+          perform it.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Landscape and technology mapping</h3>
+          <span class="asks">Where is the field going, and who holds it?</span>
+        </div>
+        <p>
+          Structured mapping of a technology or therapeutic area: filing velocity,
+          assignee positions normalised across subsidiaries and acquisitions, family-level
+          jurisdictional coverage, classification co-occurrence and white space. Built to
+          inform a decision — a portfolio move, a financing round, an acquisition — which
+          means the analysis is only as broad as that decision requires. A landscape that
+          answers everything answers nothing in time to be useful.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Licensing and monetisation support</h3>
+          <span class="asks">Which assets earn, and who is already using them?</span>
+        </div>
+        <p>
+          Portfolio analysis directed at revenue rather than at protection: asset mining
+          and ranking to surface the claims with commercial reach, evidence-of-use work
+          identifying who is already practising them, counterpart mapping across
+          jurisdictions, and maintenance-fee analysis on assets costing more than they
+          return. What this produces is the evidential groundwork a licensing programme is
+          built on. Terms, valuation opinions and negotiation remain matters for counsel.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Patent brokerage</h3>
+          <span class="asks">Who would buy this, and how does it reach them?</span>
+        </div>
+        <p>
+          Representation of holders looking to sell or out-license — often individual
+          inventors and small portfolios with no route to a buyer. The asset is packaged
+          so an acquirer's technical team can assess it quickly: claims read against the
+          market, evidence of use where it exists, family and legal status set out, and
+          the technical case written for someone who has not lived with the invention.
+          Approaches run through a network of IP professionals built over two decades
+          rather than through a listing. Terms, diligence and the transaction itself sit
+          with the parties and their counsel.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Claim charts and claim mapping</h3>
+          <span class="asks">Show the read, limitation by limitation.</span>
+          <div class="figure">
+            <svg viewBox="0 0 208 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" opacity="0.75">
+              <path class="hair" d="M0 0 H208 M0 18 H208 M0 46 H208 M0 74 H208 M0 102 H208 M0 130 H208"/>
+              <path class="hair" d="M0 0 V130 M112 0 V130 M208 0 V130"/>
+              <text class="hdr" x="7" y="12">LIMITATION</text>
+              <text class="hdr" x="119" y="12">DISCLOSURE</text>
+              <text class="cell" x="7" y="31">1[a] a polypeptide</text>
+              <text class="cell" x="7" y="40">comprising SEQ ID NO:1</text>
+              <text class="cite" x="119" y="31">col. 4, ll. 12–19</text>
+              <text class="cell" x="7" y="59">1[b] wherein X is</text>
+              <text class="cell" x="7" y="68">glycosylated at Asn-297</text>
+              <text class="cite" x="119" y="59">col. 6, ll. 3–11</text>
+              <text class="cell" x="7" y="87">1[c] said host cell</text>
+              <text class="cell" x="7" y="96">being CHO-derived</text>
+              <text class="cite" x="119" y="87">[0042]–[0045]</text>
+              <text class="cell" x="7" y="115">1[d] …</text>
+              <text class="cite" x="119" y="115">EP 0 …  A1, p. 7</text>
+            </svg>
+          </div>
+        </div>
+        <p>
+          Every limitation set against the specific disclosure said to meet it, cited to
+          column and line for granted US patents and to paragraph number for published
+          applications. Charts are prepared to be handed onward — to a client, an
+          opponent, a tribunal — and written so that each row survives being read without
+          the searcher in the room.
+        </p>
+      </li>
+
+      <li class="search">
+        <div>
+          <h3>Sequence and chemical structure searching</h3>
+          <span class="asks">Find what text retrieval cannot reach.</span>
+          <div class="figure">
+            <svg viewBox="0 0 208 62" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <text class="seq" x="0" y="10" xml:space="preserve"><tspan class="coord">Query  297  </tspan>QYNST<tspan class="res">Y</tspan>RVVSVLTVLHQDWLNGKE<tspan class="coord">  320</tspan></text>
+              <text class="mid" x="0" y="19" xml:space="preserve">            |||||&#160;||||||||||||||||||</text>
+              <text class="seq" x="0" y="28" xml:space="preserve"><tspan class="coord">Sbjct  301  </tspan>QYNST<tspan class="res">F</tspan>RVVSVLTVLHQDWLNGKE<tspan class="coord">  324</tspan></text>
+              <path class="hair" d="M0 38 H160"/>
+              <text class="cite" x="0" y="52" xml:space="preserve">Identity 23/24 (96%)   Coverage 100%</text>
+            </svg>
+          </div>
+          <div class="figure">
+            <svg viewBox="0 0 200 132" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" opacity="0.6">
+              <!-- six-membered ring, one vertex a variable heteroatom -->
+              <path class="ln" d="M60 42 L34 57 L34 87 L60 102 L86 87 L86 57 Z"/>
+              <circle class="hair" cx="60" cy="72" r="17"/>
+              <!-- R1 -->
+              <path class="ln" d="M60 42 L60 25"/>
+              <text class="rgrp" x="60" y="18" text-anchor="middle">R¹</text>
+              <!-- R2 -->
+              <path class="ln" d="M86 57 L104 46"/>
+              <text class="rgrp" x="110" y="43">R²</text>
+              <!-- amide pendant -->
+              <path class="ln" d="M86 87 L106 99 L126 87"/>
+              <path class="ln" d="M123.5 87 L123.5 69"/>
+              <path class="ln" d="M128.5 87 L128.5 69"/>
+              <path class="ln" d="M126 87 L146 99"/>
+              <text class="rgrp" x="152" y="103">R³</text>
+              <!-- ring heteroatom and chain labels, masked out of the bonds -->
+              <circle class="halo" cx="34" cy="87" r="6.5"/>
+              <text class="atom" x="34" y="90" text-anchor="middle">X</text>
+              <circle class="halo" cx="106" cy="99" r="6.5"/>
+              <text class="atom" x="106" y="102" text-anchor="middle">N</text>
+              <circle class="halo" cx="126" cy="65" r="6"/>
+              <text class="atom" x="126" y="68" text-anchor="middle">O</text>
+            </svg>
+          </div>
+        </div>
+        <p>
+          Nucleotide and amino acid sequence searching, with alignments reported on
+          identity and coverage rather than reduced to a single similarity threshold, and
+          chemical structure, substructure and Markush searching for genus claims that
+          text retrieval cannot reach. Sequence listings are worked to WIPO ST.26. Across
+          life sciences and HiTech this is where a search is won or lost, and it is the
+          part most often approximated.
+        </p>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="wrap method" aria-labelledby="method-heading">
+    <h2 id="method-heading">How a search is run</h2>
+    <p class="lede">
+      Most of what separates a useful search report from an expensive one is procedural.
+      These are the standing terms of every engagement.
+    </p>
+
+    <ul class="steps">
+
+      <li class="step">
+        <h3>Scope is agreed in writing before anything begins</h3>
+        <p>
+          Technology, claim or concept, jurisdictions, date bounds, databases to be
+          queried, and what the report has to establish. Search is expensive to redirect
+          once underway; the scoping document is where that cost is avoided.
+        </p>
+      </li>
+
+      <li class="step">
+        <h3>The strategy is disclosed, not concealed</h3>
+        <p>
+          Search strings, the CPC and IPC ranges worked, every database queried and the
+          date bounds applied are recorded in the report. Where recall was traded against
+          precision, the report says where and why. A search whose method is invisible
+          cannot be defended, extended or relied on — and cannot be told apart from one
+          that was never run.
+        </p>
+      </li>
+
+      <li class="step">
+        <h3>An interim checkpoint before the search completes</h3>
+        <p>
+          Early findings are put in front of you while scope can still be corrected
+          cheaply. Where the art is pointing somewhere unexpected, that is worth knowing
+          in week one rather than at delivery.
+        </p>
+      </li>
+
+      <li class="step">
+        <h3>Delivery is set against your deadline, not ours</h3>
+        <p>
+          Opposition windows, petition bars and filing dates do not move. The delivery
+          date is fixed at scoping and worked backwards from yours. Where a firm has a
+          house chart or report format, the deliverable arrives in that format rather
+          than in one you then have to rebuild.
+        </p>
+      </li>
+
+      <li class="step">
+        <h3>Every conclusion cited to the line</h3>
+        <p>
+          Findings are tied to specific passages, not to documents. The standard is that
+          any row of any chart can be verified by a reader who is hostile to it, without
+          asking a question.
+        </p>
+      </li>
+
+      <li class="step">
+        <h3>Questions after delivery are part of the engagement</h3>
+        <p>
+          Follow-up, clarification and a reasonable round of extension are included. A
+          report that generates a second invoice every time it is queried is not a
+          finished report.
+        </p>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="wrap" aria-labelledby="engagement-heading">
+    <h2 id="engagement-heading">How the practice works</h2>
+    <p class="lede">
+      Sambyal&nbsp;IP is deliberately small and intends to remain so. What follows are
+      choices, not a stage of growth.
+    </p>
+
+    <ul class="principles">
+
+      <li class="principle">
+        <h3>One engagement at a time</h3>
+        <p>
+          Work is accepted only when it can have the practice's full attention from
+          scoping through to report, and nothing is run alongside it. That limits how
+          much is taken on, which is the point: the alternative is dividing attention
+          across matters where a missed reference is measured in years of prosecution or
+          in litigation exposure. Capacity is added when the work requires it, not to
+          meet a number.
+        </p>
+      </li>
+
+      <li class="principle">
+        <h3>By referral</h3>
+        <p>
+          There is no outbound programme and no enquiry funnel behind this page. Work
+          arrives through relationships built over two decades and through introductions
+          made within them.
+        </p>
+      </li>
+
+      <li class="principle">
+        <h3>Conflicts cleared before scope</h3>
+        <p>
+          Any new matter is screened against current and prior engagements before
+          technical detail is exchanged. Where a conflict exists we say so and decline.
+          The written screening procedure is available to a conflicts desk on request.
+        </p>
+      </li>
+
+      <li class="principle">
+        <h3>Client material held to enterprise standard</h3>
+        <p>
+          Material arrives here before it is public. It is held in an enterprise cloud
+          environment with encryption in transit and at rest, two-step verification
+          enforced on every account with access, and that access confined to the
+          engagement it belongs to. Retention and return are agreed at scoping rather
+          than assumed. The underlying data processing terms and the handling practice
+          are supplied to an information security desk on request.
+        </p>
+      </li>
+
+      <li class="principle">
+        <h3>Nothing published, ever</h3>
+        <p>
+          Unfiled applications, invention disclosures and draft claims pass through this
+          practice. There are no client names on this page, no case studies and no
+          testimonials, and there will not be. A practice that publishes one client's work
+          has told the next client exactly what to expect.
+        </p>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="wrap foundation" aria-labelledby="foundation-heading">
+    <h2 id="foundation-heading">The foundation</h2>
+    <div class="measure">
+      <p>
+        IP search in the life sciences and in HiTech sits on a seam
+        between the science and the claim. A searcher who reads the science but not the
+        claim returns art that is interesting and does not matter. One who reads the claim
+        but not the science walks past the disclosure that does. Work that holds up is
+        done standing on both sides of it.
+      </p>
+      <p>
+        Behind this practice is twenty years of exactly that work, across US, UK, European
+        and Asian portfolios, and every engagement is reviewed against the standard that
+        work set.
+      </p>
+      <p>
+        Searching is conducted in professional patent and non-patent literature databases,
+        with sequence and structure work run in the specialist systems those subject
+        matters require.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap boundary" aria-labelledby="boundary-heading">
+    <h2 id="boundary-heading">What this practice is not</h2>
+    <div class="measure">
+      <p>
+        <strong>Sambyal&nbsp;IP is not a law firm and does not practise law.</strong>
+        It provides scientific and technical search, analysis and data services. Nothing
+        it produces is legal advice, a legal opinion or a clearance. The search is
+        delivered to the attorney, who forms the opinion and carries it.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap enquiries" aria-labelledby="enquiries-heading">
+    <h2 id="enquiries-heading">Enquiries</h2>
+    <div class="measure">
+      <p>
+        The practice does not solicit work. Introductions made from within the
+        relationships it already holds are considered as capacity allows, and there is no
+        process beyond that. A mutual non-disclosure agreement precedes any technical
+        discussion.
+      </p>
+      <a class="email" href="mailto:info@sambyalip.com">info@sambyalip.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>Sambyal&nbsp;IP · Intellectual Property Search &amp; Analytics · New Delhi, India</p>
+  <p>
+    Scientific and technical data analysis, research, search, portfolio and commercial
+    intermediary support services in life sciences and HiTech. Non-legal.
+  </p>
+  <p class="colophon">© 2026 Sambyal IP. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
