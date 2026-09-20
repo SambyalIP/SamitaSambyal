@@ -121,7 +121,7 @@
   }
   .standfirst{
     margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
-    font-size: clamp(1.125rem, 1.02rem + 0.42vw, 1.375rem);
+    font-size: clamp(1.15rem, 1.02rem + 0.6vw, 1.5rem);
     line-height: 1.62;
     max-width: 40rem;
   }
@@ -132,6 +132,27 @@
     .fade-1 { animation-delay: .05s; }
     .fade-2 { animation-delay: .32s; }
     @keyframes rise { to { opacity: 1; transform: none; } }
+
+    /* The standfirst resolves in pieces: the sentence first, then each of the six
+       clauses in turn, then the aside after a beat. Only opacity and filter are
+       animated — anything that changes metrics would reflow justified text
+       mid-animation and make the lines jump. Spans stay inline so wrapping is
+       untouched. */
+    .standfirst > span{
+      opacity: 0;
+      filter: blur(4px);
+      animation: resolve .8s cubic-bezier(.2,.7,.3,1) forwards;
+    }
+    @keyframes resolve { to { opacity: 1; filter: blur(0); } }
+
+    .standfirst .lead    { animation-delay: .25s; }
+    .standfirst .c1      { animation-delay: .50s; }
+    .standfirst .c2      { animation-delay: .57s; }
+    .standfirst .c3      { animation-delay: .64s; }
+    .standfirst .c4      { animation-delay: .71s; }
+    .standfirst .c5      { animation-delay: .78s; }
+    .standfirst .c6      { animation-delay: .85s; }
+    .standfirst .quiet   { animation-delay: 1.15s; }
   }
 
   /* ---------- thesis ---------- */
@@ -146,8 +167,8 @@
     margin: 0 0 clamp(1.5rem, 3.5vw, 2.25rem);
   }
   .thesis p{
-    font-size: clamp(1.25rem, 1.02rem + 0.95vw, 1.75rem);
-    line-height: 1.46;
+    font-size: clamp(1.15rem, 1.02rem + 0.6vw, 1.5rem);
+    line-height: 1.5;
     letter-spacing: -0.008em;
     max-width: 42rem;
     margin: 0 0 1.1em;
@@ -172,6 +193,39 @@
   .lede { margin: 0 0 clamp(2rem, 5vw, 3rem); color: var(--ink-dim); max-width: var(--measure); }
   p { margin: 0 0 1.15em; max-width: var(--measure); }
   p:last-child { margin-bottom: 0; }
+
+  /* ---------- justified body copy ---------- */
+  /* hyphens: auto is what makes this work — without it the browser can only
+     stretch word spaces and the column fills with rivers. Needs lang="en". */
+
+  main p,
+  .standfirst{
+    text-align: justify;
+    text-justify: inter-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    hyphenate-limit-chars: 7 3 3;   /* don't break short words, or too near an edge */
+  }
+
+  /* a one-line uppercase label has nothing to justify */
+  .eyebrow{ text-align: left; -webkit-hyphens: none; hyphens: none; }
+
+  /* display type is set larger, so hold its gaps tighter than the body's */
+  .standfirst,
+  .thesis p{
+    hyphenate-limit-chars: 9 4 4;
+    word-spacing: -0.01em;
+  }
+
+  /* below roughly 45 characters a line cannot be justified cleanly */
+  @media (max-width: 30rem){
+    main p,
+    .standfirst{
+      text-align: left;
+      -webkit-hyphens: none;
+      hyphens: none;
+    }
+  }
 
   /* ---------- the searches ---------- */
 
@@ -325,10 +379,15 @@
 <div class="hero">
   <div class="wrap">
     <h1 class="fade fade-1">The reference that decides a matter rarely ranks first.</h1>
-    <p class="standfirst fade fade-2">
-      Sambyal&nbsp;IP searches, analyzes and charts patents and non-patent literature for
-      Life Sciences and HiTech attorneys — testing an invention, clearing a product,
-      breaking a claim, defending one, proving a use, finding the white space.
+    <p class="standfirst">
+      <span class="lead">Sambyal&nbsp;IP searches, analyzes and charts patents and
+      non-patent literature for Life Sciences and HiTech attorneys —</span>
+      <span class="c1">testing an invention,</span>
+      <span class="c2">clearing a product,</span>
+      <span class="c3">breaking a claim,</span>
+      <span class="c4">defending one,</span>
+      <span class="c5">proving a use,</span>
+      <span class="c6">finding the white space.</span>
       <span class="quiet">It works by referral, and takes one engagement at a
       time.</span>
     </p>
