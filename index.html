@@ -127,56 +127,10 @@
   }
   .standfirst .quiet { color: var(--ink-dim); }
 
-  /* ---------- BILLBOARD ---------- */
-  /* A small plaque under the standfirst. Uses the page's own band, rule and gold
-     so it reads as part of the page rather than an advert dropped onto it. */
-
-  .billboard{
-    display: inline-flex;
-    align-items: center;
-    gap: 0.95rem;
-    margin-top: clamp(2.25rem, 5vw, 3.25rem);
-    padding: 0.85rem 1.35rem 0.85rem 1.05rem;
-    max-width: 100%;
-    background: var(--band);
-    border: 1px solid var(--rule);
-    border-left: 2px solid var(--brown);
-    font-family: var(--sans);
-    line-height: 1.4;
-  }
-  .billboard__mark{
-    flex: 0 0 auto;
-    width: 1.35rem;
-    height: 1.35rem;
-    color: var(--brown);
-  }
-  .billboard__label{
-    display: block;
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--brown);
-    margin-bottom: 0.2rem;
-  }
-  .billboard__text{
-    display: block;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    color: var(--ink-dim);
-  }
-  .billboard__text strong{
-    font-weight: 500;
-    color: var(--ink);
-    letter-spacing: 0.01em;
-  }
-  .billboard__text sup{ font-size: 0.6em; line-height: 0; }
-
   @media (prefers-reduced-motion: no-preference){
     .fade { opacity: 0; transform: translateY(0.6rem); animation: rise 1s cubic-bezier(.2,.7,.3,1) forwards; }
     .fade-1 { animation-delay: .05s; }
     .fade-2 { animation-delay: .32s; }
-    .fade-3 { animation-delay: 1.45s; }   /* BILLBOARD: arrives after the standfirst */
     @keyframes rise { to { opacity: 1; transform: none; } }
 
     /* The standfirst resolves in pieces: the sentence first, then each of the six
@@ -437,22 +391,6 @@
       <span class="quiet">It works by referral, and takes one engagement at a
       time.</span>
     </p>
-
-    <!-- BILLBOARD -->
-    <div class="billboard fade fade-3" role="note" aria-label="Search platform">
-      <svg class="billboard__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-        <circle cx="10.5" cy="10.5" r="6.5"></circle>
-        <line x1="15.4" y1="15.4" x2="20.5" y2="20.5"></line>
-        <line x1="7.5" y1="10.5" x2="13.5" y2="10.5"></line>
-        <line x1="10.5" y1="7.5" x2="10.5" y2="13.5"></line>
-      </svg>
-      <div>
-        <span class="billboard__label">Search platform</span>
-        <span class="billboard__text">Complex searches powered by <strong>CAS&nbsp;STN<sup>&reg;</sup></strong></span>
-      </div>
-    </div>
-    <!-- /BILLBOARD -->
   </div>
 </div>
 
